@@ -1,0 +1,40 @@
+# --- DATA & MODELS ---
+# We ignore these because they are too large for GitHub 
+# or contain copyrighted game assets.
+datasets/
+dataset/
+*.pth
+*.onnx
+*.weights
+*.zip
+*.tar.gz
+
+# --- PYTHON CLUTTER ---
+__pycache__/
+*.py[cod]
+*$py.class
+.env
+.venv
+env/
+venv/
+build/
+dist/
+*.egg-info/
+
+# --- JUPYTER NOTEBOOKS ---
+.ipynb_checkpoints
+*/.ipynb_checkpoints/*
+
+# --- OS & IDE SPECIFIC ---
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# --- LOGS & OUTPUTS ---
+logs/
+results/
+runs/
+*.log

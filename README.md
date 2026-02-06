@@ -21,8 +21,13 @@ This project is built in iterative stages, following a "crawl, walk, run" philos
 
 **Goal:** Specific identification of multiple characters within the same engine.
 
-* **Target Classes:** `Geralt`, `Ciri`, `Yennefer`, `Vesemir`.
+* **Target Classes:** `Geralt`, `Ciri`, `Yennefer`, `Vesemir`, `Triss`, `Other`
 * **Objective:** Move beyond "Not-Geralt" to specific labeling, training the model to recognize distinct facial landmarks for each hero.
+* **The V6 Breakthrough:** Early iterations suffered from 57% Precision for Vesemir, as the model confused him with bearded/scarred NPCs (like Damien de la Tour or King Bran). Implementing Hard Negative Mining by manually curating the Other training set to include "imposter" characters (Damien, King Bran, Regis) to force the model to learn fine-grained facial landmarks over generic traits solved the problem.
+* **Some performance metrics:**
+     * **Overall accuracy:** 85,31%
+     * **Yennefer:** Achieving near-perfect performance (95% accuracy, 100% precision, 95% recall and 97% F1-score).
+     * **Robustness:** Successfully identified new, unseen NPCs in the validation set.
 
 ### 🚀 Stage 3: The Multiverse Expansion (Upcoming)
 

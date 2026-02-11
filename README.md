@@ -17,7 +17,7 @@ This project is built in iterative stages, following a "crawl, walk, run" philos
 * **Breakthrough:** Overcame "Perspective Bias" (the model failing on cinematic camera angles) by implementing `RandomPerspective` transforms.
 * **Result:** **91% Validation Accuracy** on unseen data.
 
-### 🏗️ Stage 2: Multi-Class Identity (Current Focus)
+### ✅ Stage 2: Multi-Class Identity (Completed)
 
 **Goal:** Specific identification of multiple characters within the same engine.
 
@@ -29,14 +29,18 @@ This project is built in iterative stages, following a "crawl, walk, run" philos
      * **Yennefer:** Achieving near-perfect performance (95% accuracy, 100% precision, 95% recall and 97% F1-score).
      * **Robustness:** Successfully identified new, unseen NPCs in the validation set.
 
-### 🚀 Stage 3: The Multiverse Expansion (Upcoming)
+### 🚀 Stage 3: The Multiverse Engine (Completed)
 
-**Goal:** Cross-game character recognition.
+**Goal:** Cross-game character recognition using a specialized Two-Stage inference pipeline.
 
-* **Planned Additions:**
-    * **Sekiro:** Wolf (Sekiro), Isshin Ashina, Genichiro.
-    * **Future:** Iconic characters from various titles.
-* **Tech Shift:** Implementing **Object Detection (YOLO)** to handle multiple characters from different art styles in the same frame.
+* **Architecture:** **YOLOv8** (Object Detection) + **ResNet-18** (Classification).
+* **Target Classes (9):** `Geralt`, `Ciri`, `Yennefer`, `Triss`, `Vesemir`, `Sekiro`, `Genichiro`, `Isshin`, `Other`.
+* **The "Two-Stage" Breakthrough:** To maximize accuracy, the system decouples "finding" from "identifying." 
+    * **Stage A (The Scout):** A YOLOv8 model scans the full frame to detect all "person" entities.
+    * **Stage B (The Expert):** Each detected crop is passed to a fine-tuned ResNet-18 classifier specifically trained on high-resolution character assets and gameplay mining.
+* **Key Challenges Solved:** * **UI Occlusion:** Successfully trained the model to maintain identification even when characters are obscured by game UI
+    * **Visual Robustness:** Leveraged data mining from YouTube gameplay to expose the model to motion blur, low-light combat, and cinematic camera angles.
+* **Final Performance:** Achieved a **90.23% Validation Accuracy** across all 9 classes.
 
 ---
 
@@ -58,8 +62,8 @@ data/
 │   ├── geralt/
 │   ├── vesemir/
 │   ├── .....
-│   ├── wolf_sekiro/  # Placeholder for Stage 3
-│   └── background/   # Environmental shots, guards, and UI
+│   ├── sekiro/  # Placeholder for Stage 3
+│
 └── val/              # Mirrored structure for testing
 ```
 
